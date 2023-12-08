@@ -1,6 +1,6 @@
 'use client';
 
-import Map from '@/components/Map';
+
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { nanoid } from 'ai';
@@ -8,11 +8,7 @@ import { useChat } from 'ai/react';
 import { useState, useRef, useEffect } from 'react';
 
 export default function Chat() {
-  const [ mapLocation, setMapLocation ] = useState({
-    lat: 57,
-    lng: 12.7
-  })
-  const [ places, setPlaces ] = useState([])
+
 
   const messagesEndRef = useRef(null); // Ref to keep track of the end of the messages
 
@@ -60,7 +56,7 @@ export default function Chat() {
   
   return (
     <div className="flex flex-col w-full h-screen">
-      <div className="flex flex-1">
+      <div className="flex flex-1 mx-auto lg:w-2/3">
         <main className="flex-1 p-24 flex flex-col-reverse">
         <form className="flex space-x-4 justify-between" onSubmit={handleSubmit}>
             <input
@@ -101,11 +97,7 @@ export default function Chat() {
           </section>
           
         </main>
-        <div className="flex-1 relative"> {/* Second column */}
-          <div className="absolute bottom-0 w-full mb-24"> {/* Fix map position to bottom of second column */}
-            <Map center={mapLocation} zoom={10} places={places}/>
-          </div>
-        </div>
+        
       </div>
     </div>
     );
