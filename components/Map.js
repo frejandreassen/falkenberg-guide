@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { GoogleMap, useJsApiLoader, MarkerF, InfoWindowF, OverlayViewF, OVERLAY_MOUSE_TARGET } from '@react-google-maps/api';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const containerStyle = { height: '80vh', width: '100%' };
 const apiKey = "AIzaSyAvN9XsMfNUiAcD6hzW9V8u4fFFVy2_XBs"; // Your API Key
@@ -11,7 +13,7 @@ const options = {
   // keyBoardShortcuts: false
 }
 
-function Map({center, zoom, places}) {
+function Map({center, zoom, places, style=containerStyle}) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey
@@ -44,7 +46,7 @@ function Map({center, zoom, places}) {
 
   return isLoaded ? (
       <GoogleMap
-        mapContainerStyle={containerStyle}
+        mapContainerStyle={style}
         center={center}
         zoom={zoom}
         onLoad={onLoad}
@@ -56,7 +58,17 @@ function Map({center, zoom, places}) {
           places.map((p, i) => (
             <InfoWindowF key={i} position={p}>
               <div className="max-w-xs">
-                <h1 className="text-black">{p.text}</h1>
+                <article className="prose text-xs">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" />
+                    }}
+                  >
+                    {p.text}
+                  </ReactMarkdown>
+                </article>
+
               </div>
             </InfoWindowF>  
           ))

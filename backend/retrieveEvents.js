@@ -43,7 +43,7 @@ export async function retrieve_events(args) {
             },
             "limit": 5,
             "with_payload": true,
-            "score_threshold": 0.78
+            // "score_threshold": 0.75
         };
 
         const res = await fetch(collectionEndpoint, {
