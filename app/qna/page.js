@@ -67,7 +67,7 @@ export default function Chat() {
     setInput(e.target.value)
   }
   return (
-    <div className="flex flex-col w-full h-screen max-w-2xl mx-auto">
+    <div className="flex flex-col w-full h-screen max-w-2xl mx-auto font-montserrat">
       <div className="w-full my-4">
         <Map center={mapLocation} zoom={mapLocation.zoom} places={places} style={{ height: '45vh', width: '100%' }}/>
       </div>
@@ -95,7 +95,7 @@ export default function Chat() {
         {messages.map(m => (
          
           <div className="mb-4" key={m.id}>
-            <article className="prose">
+            <article className="prose prose-headings:font-bodoni-moda">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{

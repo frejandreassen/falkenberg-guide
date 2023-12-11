@@ -60,7 +60,8 @@ export async function retrieve_events(args) {
         }
 
         const data = await res.json();
-        return data;
+        const results = data.result.map((point) => point.payload)
+        return results;
     } catch(e) {
         console.log(e.message);
         return { error: 'unable to fetch events' };
