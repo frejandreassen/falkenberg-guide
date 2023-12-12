@@ -82,7 +82,7 @@ export default function Chat() {
               <div className="mb-4" key={m.id}>
                 {/* {m.role === 'user' ? 'User: ' : 'AI: '}
                 {m.content} */}
-                <article className="prose flex-1">
+                <article className="prose flex-1 prose-headings:font-bodoni-moda">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{

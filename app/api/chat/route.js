@@ -48,19 +48,19 @@ const functions = [
   },
   {
     name: 'retrieve_events',
-    description: 'Retrieve events filtered by dates taht matches user preferences',
+    description: 'Retrieve events filtered by dates that matches user preferences',
     parameters: {
       type: 'object',
       properties: {
         fromDate: {
             type: 'string',
             description: 'Start date for the events',
-            example: '2023-01-01'
+            example: '2024-01-01'
           },
           toDate: {
             type: 'string',
             description: 'End date for the events',
-            example: '2023-12-31'
+            example: '2024-12-31'
           },
           text: {
             type: 'string',
@@ -70,21 +70,21 @@ const functions = [
         required: ['text'],
       },
     },
-    // {
-    //   name: 'retrieve_tourist_info',
-    //   description: 'Retrieve tourist info from Falkenberg by passing latest user query as text',
-    //   parameters: {
-    //     type: 'object',
-    //     properties: {
-    //       text: {
-    //         type: 'string',
-    //         description: 'User query to search for falkenberg info',
-    //         example: 'Jag vill hitta ett barnvänligt hotell nära Ullared'
-    //       }
-    //     },
-    //     required: ['text'],
-    //   }
-    // },
+    {
+      name: 'retrieve_tourist_info',
+      description: 'Retrieve tourist info from Falkenberg by passing latest user query as text',
+      parameters: {
+        type: 'object',
+        properties: {
+          text: {
+            type: 'string',
+            description: 'User query to search for tourist info',
+            example: 'Jag vill hitta ett barnvänligt hotell nära Ullared'
+          }
+        },
+        required: ['text'],
+      }
+    },
     // {
     //   name: 'get_lat_lng',
     //   description: 'Retrieve exact lat and lng using google maps. Fallback if lat and lng is missing',
