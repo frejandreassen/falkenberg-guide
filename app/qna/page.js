@@ -1,6 +1,7 @@
 'use client';
 
 import Map from '@/components/Map';
+import Spinner from '@/components/icons/spinner';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -45,7 +46,7 @@ export default function Chat() {
     }
   };
 
-  const { messages, setMessages, setInput, handleSubmit } = useChat({
+  const { messages, setMessages, setInput, handleSubmit, isLoading } = useChat({
     experimental_onFunctionCall: functionCallHandler
   });
 
@@ -107,6 +108,7 @@ export default function Chat() {
             </article>
           </div>
         ))}
+        {isLoading && <Spinner />}
       </section>
     </div>
   );

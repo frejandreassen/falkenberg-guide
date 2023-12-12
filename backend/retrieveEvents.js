@@ -20,13 +20,22 @@ async function createEmbedding(text) {
 
 export async function retrieve_events(args) {
     try {
-        const { fromDate='', toDate='2099-12-31', text='musik|konsert|teater|föreställning' } = args;
+        const { toDate='2099-12-31', text='musik|konsert|teater|föreställning' } = args;
+        let { fromDate } = args;
         console.log('Text for event search: ', text, fromDate, toDate)
+
+        // If fromDate is not provided, use the current date
+        if (!fromDate) {
+            fromDate = new Date().toISOString().split('T')[0];
+        }
+
         const embedding = await createEmbedding(text)
-        const from = new Date(fromDate)
-        const fromTimestamp = Math.floor(from.getTime() / 1000)
+        const from = new Date(fromDate);
+        const fromTimestamp = Math.floor(from.getTime() / 1000);
+        console.log("fromTimestamp", fromTimestamp);
+
         const to = new Date(`${toDate}T23:59:59`);
-        const toTimestamp = Math.floor(to.getTime() / 1000)
+        const toTimestamp = Math.floor(to.getTime() / 1000);
 
         const payload = {
             "vector": embedding,
