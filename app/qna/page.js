@@ -1,7 +1,7 @@
 'use client';
 
 import Map from '@/components/Map';
-import Spinner from '@/components/icons/spinner';
+import Spinner from '@/components/icons/Spinner';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
