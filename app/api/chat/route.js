@@ -78,7 +78,7 @@ const functions = [
         properties: {
           text: {
             type: 'string',
-            description: 'User query to search for tourist info',
+            description: 'Raw User query to search for tourist info',
             example: 'Jag vill hitta ett barnvänligt hotell nära Ullared'
           }
         },

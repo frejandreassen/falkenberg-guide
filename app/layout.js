@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"  
         />
       </head>
-      <body className="bg-transparent">{children}</body>
+      <body className="bg-transparent font-montserrat">{children}</body>
     </html>
   )
 }
