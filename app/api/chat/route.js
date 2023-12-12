@@ -48,7 +48,7 @@ const functions = [
   },
   {
     name: 'retrieve_events',
-    description: 'Retrieve events filtered by dates that matches user preferences',
+    description: 'Retrieve future events filtered by dates that matches user preferences',
     parameters: {
       type: 'object',
       properties: {
@@ -114,7 +114,7 @@ export async function POST(req) {
   const { messages } = await req.json();
   const systemMessage = {
     role: 'system',
-    content: `Du är en hjälpsam reseguide på https://falkenberg.se som hjälper användaren att hitta passande och relevanta evenemang i Falkenberg. dagens datum är ${formattedDate}. Du svarar trevligt och informativt i markdown, redovisa relevant länk och uppdaterar kartan när du har lat och lng. Länka bara till falkenberg.se`
+    content: `Du är en hjälpsam reseguide på https://falkenberg.se som hjälper användaren att hitta framtida evenemang i Falkenberg. dagens datum är ${formattedDate}. Du svarar trevligt och informativt i markdown, redovisa relevant länk och uppdaterar kartan när du har lat och lng. Länka bara till falkenberg.se`
   };
  
   // Ask OpenAI for a streaming chat completion given the prompt
