@@ -27,7 +27,17 @@ export async function retrieve_tourist_info(args) {
 
         const payload = {
             "vector": embedding,
-            "limit": 3,
+            "limit": 5,
+            "filter": {
+                "must_not": [
+                    {
+                        "key": "uri",
+                        "match": {
+                            "text": "/inspiration/"
+                        }
+                    }
+                ]
+            },
             "with_payload": true
         };
 
